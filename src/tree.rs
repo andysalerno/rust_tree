@@ -11,7 +11,11 @@ impl<T> TreeNode<T> {
         }
     }
 
-    pub fn get_children(&mut self) -> &mut Vec<Box<TreeNode<T>>> {
+    pub fn get_children(&self) -> &Vec<Box<TreeNode<T>>> {
+        &self.children
+    }
+
+    pub fn get_mut_children(&mut self) -> &mut Vec<Box<TreeNode<T>>> {
         &mut self.children
     }
 
@@ -43,7 +47,7 @@ impl<T> Tree<T> {
     pub fn add_child(parent: &mut TreeNode<T>, data: T) -> &TreeNode<T> {
         let child_node = TreeNode::new(data);
         {
-            let children = &mut parent.get_children();
+            let children = &mut parent.get_mut_children();
             children.push(Box::new(child_node));
         }
         let length = parent.get_children().len();
