@@ -14,6 +14,14 @@ impl<T> TreeNode<T> {
     pub fn get_children(&mut self) -> &mut Vec<Box<TreeNode<T>>> {
         &mut self.children
     }
+
+    pub fn get_data(&self) -> &T {
+        &self.data
+    }
+
+    pub fn get_mut_data(&mut self) -> &mut T {
+        &mut self.data
+    }
 }
 
 pub struct Tree<T> {
